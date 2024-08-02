@@ -23,7 +23,7 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'image' => 'required',
+            'image' => ['required'],
             'type_id' => 'required',
             'technologies' => ['required','array','exists:technologies,id']
         ];

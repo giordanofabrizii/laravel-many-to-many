@@ -9,7 +9,9 @@
     <div class="container">
         <div class="row">
             <article class="col-12">
-                <img src="{{$project->image}}" alt="">
+                {{-- <img src="{{$project->image}}" alt=""> --}}
+                @dump($project->image)
+                <img class="img-fluid" src="{{ asset('storage/app/public/' . $project->image) }}" alt="">
                 <div>
                     <h3 class=" my-2 p-2 rounded d-inline-block" style="background:  {{ $project->type->color }}">{{ $project->type->name }}</h3>
                 </div>
