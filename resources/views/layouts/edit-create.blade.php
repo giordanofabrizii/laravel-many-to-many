@@ -35,6 +35,16 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="technology_id">Project Technologies</label>
+                        <div class="customChechBoxHolder">
+                            @foreach ($technologies as $technology)
+                                <input type="checkbox" class="btn-check" value="{{ $technology->id }}" name="technologies[]" id="technology-check-{{ $technology->id }}" autocomplete="off"
+                                {{ in_array($technology->id, old('technologies', $project->technologies->pluck('id')->toArray())) ? "checked" : ""}}>
+                                <label class="btn btn-outline-primary" for="technology-check-{{$technology->id}}">{{ $technology->name }}</label>
+                            @endforeach
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-primary mt-2">@yield('name')</button>
                 </form>
             </div>

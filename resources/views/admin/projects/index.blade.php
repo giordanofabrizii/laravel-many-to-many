@@ -21,6 +21,7 @@
                         <th scope="col">Title</th>
                         <th scope="col">Image Url</th>
                         <th scope="col">Type</th>
+                        <th scope="col">Technologies</th>
                         <th scope="col">Buttons</th>
                     </tr>
                 </thead>
@@ -31,6 +32,18 @@
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->image }}</td>
                             <td>{{ $project->type->name }}</td>
+                            <td>
+                                @forelse($project->technologies as $index => $technology)
+                                    {{ $technology->name }}
+
+                                    @if ($index != count($project->technologies) - 1)
+                                        ,
+                                    @endif
+                                    
+                                @empty
+                                    Nessuna tecnologia
+                                @endforelse
+                            </td>
                             <td>
                                 <a class="btn btn-primary" href="{{ Route('admin.projects.show', compact('project')) }}">Show</a>
                                 <a class="btn btn-warning" href="{{route('admin.projects.edit',compact('project'))}}">Edit</a>

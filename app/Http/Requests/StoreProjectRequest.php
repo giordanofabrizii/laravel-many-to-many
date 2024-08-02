@@ -25,6 +25,7 @@ class StoreProjectRequest extends FormRequest
             'title' => 'required',
             'image' => 'required',
             'type_id' => 'required',
+            'technologies' => ['required','array','exists:technologies,id']
         ];
     }
     public function messages(){

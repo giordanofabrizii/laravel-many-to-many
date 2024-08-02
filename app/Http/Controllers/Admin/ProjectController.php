@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
@@ -26,8 +27,9 @@ class ProjectController extends Controller
     public function create()
     {
         $project = new Project();
+        $technologies = Technology::all();
         $types = Type::all();
-        return view('admin.projects.create',compact('project','types'));
+        return view('admin.projects.create',compact('project','types', 'technologies'));
     }
 
     /**
@@ -38,6 +40,7 @@ class ProjectController extends Controller
         $data = $request->validated();
         $newProject = new Project($data);
         $newProject->save();
+        $newProject->technologies()->sync($data['technologies']);
         return redirect()->route('admin.projects.show', $newProject);
 
     }
@@ -56,8 +59,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        $technologies = Technology::all();
         $types = Type::all();
-        return view('admin.projects.edit',compact('project','types'));
+        return view('admin.projects.edit',compact('project','types','technologies'));
     }
 
     /**
@@ -65,8 +69,10 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
+
         $data = $request->validated();
         $project->update($data);
+        $project->technologies()->sync($data['technologies']);
         return redirect()->route('admin.projects.show', $project);
     }
 
@@ -75,6 +81,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        $project->technologies->detach();
         $project->delete();
         return redirect()->route('admin.projects.index');
     }
