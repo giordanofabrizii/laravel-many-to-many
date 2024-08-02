@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Project;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Technology extends Model
@@ -16,6 +17,6 @@ class Technology extends Model
     ];
 
     public function projects() {
-        return $this->belongsToMany('App\Models\Project');
+        return $this->belongsToMany(Project::class);
     }
 }
