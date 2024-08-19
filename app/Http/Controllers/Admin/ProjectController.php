@@ -81,7 +81,7 @@ class ProjectController extends Controller
             Storage::disk('public')->delete($project->image);
         }
         $imgPath = $request->file('image')->store('uploads/project', 'public');
-        $data['img'] = $imgPath;
+        $data['image'] = $imgPath;
 
         $project->update($data);
         $project->technologies()->sync($data['technologies']);

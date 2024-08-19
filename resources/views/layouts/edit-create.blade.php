@@ -31,7 +31,7 @@
                                 value="{{$type->id}}">{{ $type->name }} </option>
                             @endforeach
                         </select>
-                        @error('image')
+                        @error('type_id')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
