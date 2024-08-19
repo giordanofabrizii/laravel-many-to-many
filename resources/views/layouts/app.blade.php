@@ -29,6 +29,9 @@
                 <a class="nav-link mx-2" href="{{ Route('admin.types.index') }}">
                     Types
                 </a>
+                <a class="nav-link mx-2" href="{{ Route('admin.technologies.index') }}">
+                    Technologies
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon">CIAO</span>
                 </button>
