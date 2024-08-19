@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectsController;
 use App\Http\Controllers\Admin\typeController as AdminTypesController;
+use App\Http\Controllers\Admin\TechnologyController as AdminTechnologyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,6 @@ Route::middleware('auth')->name('admin.')->prefix('admin/')->group(function(){
     Route::patch('types/{type}/restore', [AdminTypesController::class, 'restore'])->name('type.restore');
     Route::delete('types/{type}/permdelete', [AdminTypesController::class, 'permdelete'])->name('type.permdelete');
     Route::resource("types",AdminTypesController::class);
+
+    Route::get('technologies',[AdminTechnologyController::class, 'index'])->name('technologies.index');
 });
