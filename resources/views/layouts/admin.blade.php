@@ -33,6 +33,9 @@
                 <a class="nav-link mx-2" href="{{ Route('admin.technologies.index') }}">
                     Technologies
                 </a>
+                <a class="nav-link mx-2" href="{{ Route('admin.teammates.index') }}">
+                    Teammates
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
